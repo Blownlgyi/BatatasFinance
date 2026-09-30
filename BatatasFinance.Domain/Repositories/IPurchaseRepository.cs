@@ -1,9 +1,9 @@
 ﻿using BatatasFinance.Domain.Entities;
 
-namespace BatatasFinance.Application.Repositories;
+namespace BatatasFinance.Domain.Repositories;
 
 public interface IPurchaseRepository
 {
     Task AddAsync (Purchase purchase);
-    Task<IEnumerable<Purchase>> GetAllAsync();
+    Task<IEnumerable<Purchase?>> GetAllAsync();
 }

@@ -2,27 +2,20 @@
 
 namespace BatatasFinance.Infrastructure.Repositories;
 using BatatasFinance.Domain.Entities;
-using BatatasFinance.Application.Repositories;
+using BatatasFinance.Domain.Repositories;
 using BatatasFinance.Infrastructure.Data;
 
-public class PurchaseRepository : IPurchaseRepository
+public class PurchaseRepository (BatatasDbContext context) : IPurchaseRepository
 {
-    private readonly BatatasDbContext _context;
-
-    public PurchaseRepository(BatatasDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task AddAsync(Purchase purchase)
     {
-        await _context.Purchases.AddAsync(purchase);
-        await _context.SaveChangesAsync(); 
+        await context.Purchases.AddAsync(purchase);
+        await context.SaveChangesAsync(); 
     }
 
-    public async Task<IEnumerable<Purchase>> GetAllAsync()
+    public async Task<IEnumerable<Purchase?>> GetAllAsync()
     {
-        return await _context.Purchases.AsNoTracking().ToListAsync();
+        return await context.Purchases.AsNoTracking().ToListAsync();
     }
 
    

@@ -1,4 +1,4 @@
-﻿namespace BatatasFinance.Application.UseCases;
+﻿namespace BatatasFinance.Application.Interfaces;
 
 public interface IRegisterPurchaseUseCase
 {

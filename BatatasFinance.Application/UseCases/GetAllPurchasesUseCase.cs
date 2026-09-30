@@ -1,17 +1,22 @@
-﻿namespace BatatasFinance.Application.UseCases;
+﻿using BatatasFinance.Application.DTOs;
+
+namespace BatatasFinance.Application.UseCases;
 using BatatasFinance.Domain.Entities;
-using BatatasFinance.Application.Repositories;
-public class GetAllPurchasesUseCase : IGetAllPurchasesUseCase
+using BatatasFinance.Domain.Repositories;
+using BatatasFinance.Application.Interfaces;
+public class GetAllPurchasesUseCase(IPurchaseRepository repository) : IGetAllPurchasesUseCase
 {
-    private readonly IPurchaseRepository _repository;
-
-    public GetAllPurchasesUseCase(IPurchaseRepository repository)
+    
+    public async Task<IEnumerable<PurchaseResponse?>> ExecuteAsync()
     {
-        _repository = repository;
-    }
+        var purchases = await repository.GetAllAsync();
 
-    public async Task<IEnumerable<Purchase>> ExecuteAsync()
-    {
-        return await _repository.GetAllAsync();
+
+        return purchases.Select(p => new PurchaseResponse(
+            p.Id, 
+            p.Description, 
+            p.Amount, 
+            p.CreatedAt
+        ));
     }
 }
