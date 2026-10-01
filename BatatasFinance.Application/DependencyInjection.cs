@@ -10,6 +10,8 @@ public static class DependencyInjection
     {
         services.AddScoped<IRegisterPurchaseUseCase, RegisterPurchaseUseCase>();
         services.AddScoped<IGetAllPurchasesUseCase, GetAllPurchasesUseCase>();
+        services.AddScoped<IRegisterIncomeUseCase, RegisterIncomeUseCase>();
+        services.AddScoped<IGetAllIncomesUseCase, GetAllIncomesUseCase>();
         return services;
     }
 }

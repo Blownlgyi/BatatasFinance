@@ -13,6 +13,7 @@ public static class DependencyInjection
         services.AddDbContext<BatatasDbContext>(options => 
             options.UseInMemoryDatabase("BatatasDb"));
         services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+        services.AddScoped<IIncomeRepository, IncomeRepository>();
         return services;
     }
 }
