@@ -16,6 +16,7 @@ public class GetAllCreditCards(ICreditCardRepository repository) : IGetAllCredit
             c.CreditLimit,
             c.ClosingDay,
             c.DueDay,
+            c.UserId,
             c.CreditFlag,
             c.CreateAt
         ));

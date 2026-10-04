@@ -10,6 +10,7 @@ public interface IRegisterExpenseUseCase
         ExpenseCategory category,
         PaymentMethod  paymentMethod,
         bool isFixed,
+        Guid userId,
         Guid? creditCardId
          );
 }

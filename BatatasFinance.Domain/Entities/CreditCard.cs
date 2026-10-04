@@ -9,10 +9,13 @@ public class CreditCard
     public decimal CreditLimit { get ;  set; }
     public int ClosingDay { get ; set ; } 
     public int DueDay { get ; set ; }
+    public Guid UserId { get ; set ; }
     public CreditFlag CreditFlag { get ; init; }
     public DateTimeOffset CreateAt { get ; init; }
-    public CreditCard(string name, decimal creditLimit, int closingDay, int dueDay, CreditFlag creditFlag)
+    public CreditCard(string name, decimal creditLimit, int closingDay, int dueDay, Guid userId, CreditFlag creditFlag)
     {
+        if (userId == Guid.Empty)
+            throw new ArgumentException("User must have an ID");
         if (string.IsNullOrEmpty(name))
             throw new ArgumentException("Name cannot be null or empty");
         if (creditLimit < 0)
@@ -26,6 +29,7 @@ public class CreditCard
         CreditLimit = creditLimit;
         ClosingDay = closingDay;
         DueDay = dueDay;
+        UserId = userId;
         CreditFlag = creditFlag;
     }
     public void UpdateLimit(decimal newcreditLimit)

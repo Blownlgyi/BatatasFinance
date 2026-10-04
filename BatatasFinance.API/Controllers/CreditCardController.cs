@@ -17,6 +17,7 @@ public class CreditCardController (IRegisterCreditCardUseCase registerCreditCard
                 request.CreditLimit,
                 request.ClosingDay,
                 request.DueDay,
+                request.UserId,
                 request.CreditFlag);
             return Created();
         }

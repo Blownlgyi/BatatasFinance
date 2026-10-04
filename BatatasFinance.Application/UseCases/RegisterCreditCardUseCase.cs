@@ -13,11 +13,12 @@ public class RegisterCreditCardUseCase (ICreditCardRepository repository, ILogge
         decimal creditLimit,
         int closingDay, 
         int dueDay,
+        Guid userId,
         CreditFlag creditFlag
         )
     {
         logger.LogInformation($"Starting Registering creditcard {creditFlag}");
-        var creditCard = new CreditCard(name, creditLimit, closingDay, dueDay, creditFlag);
+        var creditCard = new CreditCard(name, creditLimit, closingDay, dueDay, userId, creditFlag);
         await repository.AddAsync(creditCard);
         logger.LogInformation($"Card {name} successfully registered Id {creditCard.Id}");
         

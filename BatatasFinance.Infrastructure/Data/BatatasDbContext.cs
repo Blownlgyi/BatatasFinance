@@ -10,4 +10,5 @@ public class BatatasDbContext : DbContext
     public DbSet<Expense> Expenses { get; set; }
     public DbSet<Income> Incomes { get; set; }
     public DbSet<CreditCard> CreditCards { get; set; }
+    public DbSet<User> Users { get; set; }
 }

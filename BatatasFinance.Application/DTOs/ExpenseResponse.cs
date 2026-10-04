@@ -10,6 +10,7 @@ public record ExpenseResponse
     ExpenseCategory Category ,
     PaymentMethod PaymentMethod ,
     bool IsFixed ,
+    Guid UserId ,
     Guid? CreditCardId, 
     DateTimeOffset CreatedAt
     );

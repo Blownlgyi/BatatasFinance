@@ -9,6 +9,7 @@ public interface IRegisterCreditCardUseCase
         decimal creditLimit,
         int closingDay,
         int dueDay,
+        Guid userId,
         CreditFlag creditFlag
        );
 }

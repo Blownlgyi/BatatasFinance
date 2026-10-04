@@ -17,6 +17,7 @@ public class GetAllExpensesUseCase(IExpenseRepository repository) : IGetAllPurch
             p.Category,
             p.PaymentMethod,
             p.IsFixed,
+            p.UserId,
             p.CreditCardId,
             p.CreatedAt
         ));

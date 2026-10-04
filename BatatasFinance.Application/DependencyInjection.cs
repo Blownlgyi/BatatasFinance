@@ -14,6 +14,8 @@ public static class DependencyInjection
         services.AddScoped<IGetAllIncomesUseCase, GetAllIncomesUseCase>();
         services.AddScoped<IRegisterCreditCardUseCase, RegisterCreditCardUseCase>();
         services.AddScoped<IGetAllCreditCards, GetAllCreditCards>();
+        services.AddScoped<IRegisterUserCase, RegisterUserCase>();
+        
         return services;
     }
 }

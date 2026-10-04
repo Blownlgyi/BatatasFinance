@@ -12,8 +12,15 @@ public class ExpensesController(IRegisterExpenseUseCase registerExpenseUseCase, 
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] RegisterExpenseRequest request)
     {
-        await registerExpenseUseCase.ExecuteAsync(request.Description, request.Amount, request.Category, request.PaymentMethod, request.IsFixed, request.CreditCardId);
-        return Ok();
+        try
+        {
+            await registerExpenseUseCase.ExecuteAsync(request.Description, request.Amount, request.Category,request.PaymentMethod, request.IsFixed, request.UserId, request.CreditCardId);
+            return Created();
+        }
+        catch(Exception e)
+        {
+            return BadRequest();
+        }
     }
     [HttpGet]
     public async Task<IActionResult> GetAll()

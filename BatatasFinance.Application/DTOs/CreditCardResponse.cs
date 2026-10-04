@@ -9,6 +9,7 @@ public record CreditCardResponse
     decimal CreditLimit,
     int  ClosingDay,
     int  DueDay,
+    Guid UserId,
     CreditFlag CreditFlag,
     DateTimeOffset CreatedAt
     
