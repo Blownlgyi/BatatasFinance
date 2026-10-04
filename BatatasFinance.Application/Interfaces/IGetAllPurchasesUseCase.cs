@@ -5,5 +5,5 @@ namespace BatatasFinance.Application.Interfaces;
 
 public interface IGetAllPurchasesUseCase
 {
-    Task<IEnumerable<PurchaseResponse?>> ExecuteAsync();
+    Task<IEnumerable<ExpenseResponse?>> ExecuteAsync();
 }

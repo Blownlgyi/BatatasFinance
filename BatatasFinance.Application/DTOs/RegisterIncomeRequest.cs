@@ -1,3 +1,13 @@
-﻿namespace BatatasFinance.Application.DTOs;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record RegisterIncomeRequest(string Description, decimal Amount, bool IsRecurring);
+namespace BatatasFinance.Application.DTOs;
+
+public record RegisterIncomeRequest
+{
+    [Required]
+    public string Description { get; init; }
+    [Required]
+    public decimal Amount{ get; init; }
+    [Required]
+    public bool IsRecurring { get; init; }
+};

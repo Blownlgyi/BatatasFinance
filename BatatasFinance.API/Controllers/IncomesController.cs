@@ -4,21 +4,17 @@ using BatatasFinance.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BatatasFinance.API.Controllers;
+
 [ApiController]
 [Route("api/[controller]")]
-public class IncomesController (IRegisterIncomeUseCase registeUseCase, IGetAllIncomesUseCase getAllIncomesUseCase) : ControllerBase
+public class IncomesController(IRegisterIncomeUseCase registeUseCase, IGetAllIncomesUseCase getAllIncomesUseCase) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] RegisterIncomeRequest request)
     {
-        if (request is null)
-        {
-            return BadRequest(new { message = "Request body is empty" });
-        }
         await registeUseCase.ExecuteAsync(request.Description, request.Amount, request.IsRecurring);
-        return Ok();
+        return Created();
     }
-
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {

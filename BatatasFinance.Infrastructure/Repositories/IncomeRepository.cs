@@ -12,7 +12,6 @@ public class IncomeRepository(BatatasDbContext context) : IIncomeRepository
         await context.Incomes.AddAsync(income);
         await context.SaveChangesAsync();
     }
-
     public async Task<IEnumerable<Income>> GetAllAsync()
     {
         return await context.Incomes.AsNoTracking().ToListAsync();
