@@ -9,8 +9,6 @@ public class GetAllIncomesUseCase(IIncomeRepository repository) : IGetAllIncomes
     public async Task<IEnumerable<IncomeResponse>> ExecuteAsync()
     {
         var incomes = await repository.GetAllAsync();
-
-
         return incomes.Select(i => new IncomeResponse(
             i.Id,
             i.Description,

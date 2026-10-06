@@ -4,5 +4,5 @@ public interface ICreditCardRepository
 {
     Task AddAsync(CreditCard creditCard);
     Task <IEnumerable<CreditCard?>> GetAllAsync();
-    
+    Task<CreditCard?> GetByIdAsync(Guid creditCardId);
 }

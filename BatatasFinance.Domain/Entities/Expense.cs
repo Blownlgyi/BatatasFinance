@@ -12,6 +12,7 @@ public class Expense
     public bool IsFixed { get; init; }
     public Guid UserId { get; set; }
     public Guid? CreditCardId { get; init; }
+    public int Installments { get; init; }
     public DateTimeOffset CreatedAt { get; init; }
     public Expense(
         string description,
@@ -20,7 +21,8 @@ public class Expense
         PaymentMethod paymentMethod,
         bool isFixed,
         Guid userId,
-        Guid? creditCardId
+        Guid? creditCardId,
+        int installments
         )
     {
         if(userId == Guid.Empty)
@@ -33,6 +35,8 @@ public class Expense
             throw new ArgumentException("Invalid credit card id.");
         if (userId == Guid.Empty)
             throw new ArgumentException("Invalid user.");
+        if (installments < 1 || installments > 12 )
+            throw new ArgumentException("invalid number installments.");
         Id = Guid.NewGuid();
         Description = description;
         Amount = amount;
@@ -41,6 +45,7 @@ public class Expense
         IsFixed = isFixed;
         UserId = userId;
         CreditCardId = creditCardId;
+        Installments = installments;
         CreatedAt = DateTime.UtcNow;
     }
 }

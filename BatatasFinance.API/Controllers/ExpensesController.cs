@@ -14,13 +14,13 @@ public class ExpensesController(IRegisterExpenseUseCase registerExpenseUseCase, 
     {
         try
         {
-            await registerExpenseUseCase.ExecuteAsync(request.Description, request.Amount, request.Category,request.PaymentMethod, request.IsFixed, request.UserId, request.CreditCardId);
+            await registerExpenseUseCase.ExecuteAsync(request.Description, request.Amount, request.Category,request.PaymentMethod, request.IsFixed, request.UserId, request.CreditCardId, request.Installments);
             return Created();
         }
         catch(Exception e)
         {
-            return BadRequest();
-        }
+            return BadRequest(new { message = e.Message });
+        } 
     }
     [HttpGet]
     public async Task<IActionResult> GetAll()
@@ -32,4 +32,6 @@ public class ExpensesController(IRegisterExpenseUseCase registerExpenseUseCase, 
         }
         return Ok(response);
     }
+
+    
 }

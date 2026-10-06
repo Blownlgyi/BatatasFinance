@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BatatasFinance.Application.UseCases;
 
-public class RegisterExpensesUseCase(IExpenseRepository repository, Logger<RegisterExpensesUseCase> logger) : IRegisterExpenseUseCase
+public class RegisterExpensesUseCase(IExpenseRepository repository, ILogger<RegisterExpensesUseCase> logger) : IRegisterExpenseUseCase
 {
     public async Task ExecuteAsync(
         string description,
@@ -15,11 +15,12 @@ public class RegisterExpensesUseCase(IExpenseRepository repository, Logger<Regis
         PaymentMethod paymentMethod,
         bool isFixed,
         Guid  userId,
-        Guid? creditCardId
+        Guid? creditCardId,
+        int installments
         )
     {
         logger.LogInformation($"Register expense {description}");
-        var purchase = new Expense(description, amount , category, paymentMethod, isFixed, userId , creditCardId);
+        var purchase = new Expense(description, amount , category, paymentMethod, isFixed, userId , creditCardId, installments);
         await repository.AddAsync(purchase);
         logger.LogInformation($"Expenses register sucess {description}");
 

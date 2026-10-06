@@ -11,6 +11,7 @@ public interface IRegisterExpenseUseCase
         PaymentMethod  paymentMethod,
         bool isFixed,
         Guid userId,
-        Guid? creditCardId
+        Guid? creditCardId,
+        int installments
          );
 }

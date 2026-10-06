@@ -2,8 +2,8 @@
 
 namespace BatatasFinance.Application.DTOs;
 
-public record ExpenseResponse
-    (
+public record CreditCardSummaryExpensesResponse
+(
     Guid Id ,
     string Description ,
     decimal Amount ,
@@ -14,4 +14,4 @@ public record ExpenseResponse
     Guid? CreditCardId,
     int  Installments,
     DateTimeOffset CreatedAt
-    );
+);

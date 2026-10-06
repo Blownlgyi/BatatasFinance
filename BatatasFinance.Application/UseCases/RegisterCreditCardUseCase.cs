@@ -21,6 +21,5 @@ public class RegisterCreditCardUseCase (ICreditCardRepository repository, ILogge
         var creditCard = new CreditCard(name, creditLimit, closingDay, dueDay, userId, creditFlag);
         await repository.AddAsync(creditCard);
         logger.LogInformation($"Card {name} successfully registered Id {creditCard.Id}");
-        
     }
 }

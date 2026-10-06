@@ -19,6 +19,7 @@ public class GetAllExpensesUseCase(IExpenseRepository repository) : IGetAllPurch
             p.IsFixed,
             p.UserId,
             p.CreditCardId,
+            p.Installments,
             p.CreatedAt
         ));
     }

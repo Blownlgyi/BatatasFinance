@@ -10,5 +10,6 @@ public record RegisterExpenseRequest
     public bool IsFixed { get; init; }
     public Guid UserId { get; init; }
     public Guid? CreditCardId { get; init; }
+    public int Installments  { get; init; }
     public PaymentMethod PaymentMethod { get; init; }
 }
