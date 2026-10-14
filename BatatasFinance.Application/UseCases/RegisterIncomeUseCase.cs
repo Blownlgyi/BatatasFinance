@@ -8,7 +8,14 @@ public class RegisterIncomeUseCase(IIncomeRepository repository) : IRegisterInco
 {
     public async Task ExecuteAsync(string description, decimal amount, bool isRecurring)
     {
-        var income = new Income(description, amount, isRecurring);
-        await repository.AddAsync(income);
+        try
+        {
+            var income = new Income(description, amount, isRecurring);
+            await repository.AddAsync(income);
+        }
+        catch (Exception ex)
+        {
+            
+        }
     }
 }

@@ -8,10 +8,12 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
-        services.AddScoped<IRegisterPurchaseUseCase, RegisterPurchaseUseCase>();
-        services.AddScoped<IGetAllPurchasesUseCase, GetAllPurchasesUseCase>();
+        services.AddScoped<IRegisterExpenseUseCase, RegisterExpensesUseCase>();
+        services.AddScoped<IGetAllPurchasesUseCase, GetAllExpensesUseCase>();
         services.AddScoped<IRegisterIncomeUseCase, RegisterIncomeUseCase>();
         services.AddScoped<IGetAllIncomesUseCase, GetAllIncomesUseCase>();
+        services.AddScoped<IRegisterCreditCardUseCase, RegisterCreditCardUseCase>();
+        services.AddScoped<IGetAllCreditCards, GetAllCreditCards>();
         return services;
     }
 }
