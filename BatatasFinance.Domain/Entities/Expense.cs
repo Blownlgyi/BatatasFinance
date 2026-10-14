@@ -12,6 +12,7 @@ public class Expense
     public bool IsFixed { get; init; }
     public Guid UserId { get; set; }
     public Guid? CreditCardId { get; init; }
+    public Guid? AccountId { get; init; }
     public int Installments { get; init; }
     public DateTimeOffset CreatedAt { get; init; }
     public Expense(
@@ -22,6 +23,7 @@ public class Expense
         bool isFixed,
         Guid userId,
         Guid? creditCardId,
+        Guid? accountId,
         int installments
         )
     {
@@ -45,7 +47,10 @@ public class Expense
         IsFixed = isFixed;
         UserId = userId;
         CreditCardId = creditCardId;
+        AccountId = accountId;
         Installments = installments;
-        CreatedAt = DateTime.UtcNow;
+        CreatedAt = DateTimeOffset.UtcNow;
     }
+    private Expense(){}
+
 }

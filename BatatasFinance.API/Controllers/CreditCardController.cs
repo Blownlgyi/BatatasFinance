@@ -1,5 +1,7 @@
-﻿using BatatasFinance.Application.DTOs;
-using BatatasFinance.Application.Interfaces;
+﻿using BatatasFinance.Application.UseCases.CreditCards.GetAll;
+using BatatasFinance.Application.UseCases.CreditCards.GetCreditCardExpense;
+using BatatasFinance.Application.UseCases.CreditCards.GetSummary;
+using BatatasFinance.Application.UseCases.CreditCards.Register;
 using Microsoft.AspNetCore.Mvc;
 namespace BatatasFinance.API.Controllers;
 
@@ -27,10 +29,10 @@ public class
             return BadRequest(e.Message);
         }
     }
-    [HttpGet]
-    public async Task<IActionResult> GetCreditCards()
+    [HttpGet ("{userId}")]
+    public async Task<IActionResult> GetCreditCards([FromRoute] Guid userId)
     {
-        var response = await getAllCreditCards.ExecuteAsync();
+        var response = await getAllCreditCards.ExecuteAsync(userId);
         if (!response.Any())
         {
             return NoContent();
@@ -61,7 +63,7 @@ public class
         }
         catch(Exception e)
         {
-            return BadRequest();
+            return BadRequest(e.Message);
         }
     }
 }

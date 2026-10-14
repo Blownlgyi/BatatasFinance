@@ -10,8 +10,8 @@ public class CreditCard
     public int ClosingDay { get ; set ; } 
     public int DueDay { get ; set ; }
     public Guid UserId { get ; set ; }
-    public CreditFlag CreditFlag { get ; init; }
-    public DateTimeOffset CreateAt { get ; init; }
+    public CreditFlag CreditFlag { get ; set; }
+    public DateTimeOffset CreatedAt { get ; set; }
     public CreditCard(string name, decimal creditLimit, int closingDay, int dueDay, Guid userId, CreditFlag creditFlag)
     {
         if (userId == Guid.Empty)
@@ -31,6 +31,18 @@ public class CreditCard
         DueDay = dueDay;
         UserId = userId;
         CreditFlag = creditFlag;
+        CreatedAt = DateTimeOffset.UtcNow;
+    }
+    private CreditCard(Guid id, string name, decimal creditlimit, int closingday, int dueday, Guid userid, CreditFlag creditflag, DateTime createdat)
+    {
+        Id = id;
+        Name = name;
+        CreditLimit = creditlimit;
+        ClosingDay = closingday;
+        DueDay = dueday;
+        UserId = userid;
+        CreditFlag = creditflag; 
+        CreatedAt = new DateTimeOffset(createdat, TimeSpan.Zero);
     }
     public void UpdateLimit(decimal newcreditLimit)
     {
